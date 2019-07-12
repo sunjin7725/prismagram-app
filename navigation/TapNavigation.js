@@ -1,13 +1,35 @@
-import { createBottomTabNavigator } from "react-navigation";
-import Home from "../screens/Home";
-import Notifications from "../screens/Notifications";
-import Profile from "../screens/Profile";
-import Search from "../screens/Search";
-import { View } from "react-native";
+import {
+    createBottomTabNavigator,
+    createStackNavigator
+} from "react-navigation";
+import React from "react";
+import Home from "../screens/Tabs/Home";
+import Notifications from "../screens/Tabs/Notifications";
+import Profile from "../screens/Tabs/Profile";
+import Search from "../screens/Tabs/Search";
+import { View, Text } from "react-native";
+import MessageLink from "../components/MessagesLink";
+
+const stackFactory = (initialRoute, customConfig) =>
+    createStackNavigator({
+        initialRoute: {
+            screen: initialRoute,
+            navigationOptions: { ...customConfig }
+        }
+    });
 
 export default createBottomTabNavigator({
-    Home,
-    Search,
+    Home: {
+        screen: stackFactory(Home, {
+            title: "Home",
+            headerRight: <MessageLink />
+        })
+    },
+    Search: {
+        screen: stackFactory(Search, {
+            title: "Search"
+        })
+    },
     Add: {
         screen: View,
         navigationOptions: {
@@ -16,6 +38,14 @@ export default createBottomTabNavigator({
             }
         }
     },
-    Notifications,
-    Profile
+    Notifications: {
+        screen: stackFactory(Notifications, {
+            title: "Notifications"
+        })
+    },
+    Profile: {
+        screen: stackFactory(Profile, {
+            title: "Profile"
+        })
+    }
 });
