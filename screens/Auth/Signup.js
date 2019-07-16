@@ -14,6 +14,14 @@ const View = styled.View`
     flex: 1;
 `;
 
+const FBContainer = styled.View`
+    margin-top: 25px;
+    padding-top: 25px;
+    border-top-width: 1px;
+    border-color: ${props => props.theme.lightGrayColor};
+    border-style: solid;
+`;
+
 export default ({ navigation }) => {
     const fNameInput = useInput("");
     const lNameInput = useInput("");
@@ -93,6 +101,16 @@ export default ({ navigation }) => {
                     text="Sign up"
                     onPress={handleSignup}
                 />
+                <FBContainer>
+                    <AuthButton
+                        bgColor={"#2D4DA7"}
+                        loading={false}
+                        onPress={() => {
+                            Alert.alert("We cannot provide Facebook Login.");
+                        }}
+                        text="Connect FaceBook"
+                    />
+                </FBContainer>
             </View>
         </TouchableWithoutFeedback>
     );

@@ -2,6 +2,7 @@ import { createStackNavigator, createAppContainer } from "react-navigation";
 import TabNavigation from "./TapNavigation";
 import PhotoNavigation from "./PhotoNavigation";
 import MessageNavigation from "./MessageNavigation";
+import { stackStyles } from "./config";
 
 const MainNavigation = createStackNavigator(
     {
@@ -10,7 +11,13 @@ const MainNavigation = createStackNavigator(
         MessageNavigation
     },
     {
-        headerMode: "none"
+        defaultNavigationOptions: {
+            headerStyle: {
+                ...stackStyles
+            }
+        },
+        headerMode: "none",
+        mode: "modal"
     }
 );
 
