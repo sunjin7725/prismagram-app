@@ -73,8 +73,12 @@ export default createBottomTabNavigator(
                 tabBarIcon: ({ focused }) => (
                     <NavIcon
                         focused={focused}
-                        size={28}
-                        name={Platform.OS === "ios" ? "ios-add" : "md-add"}
+                        size={32}
+                        name={
+                            Platform.OS === "ios"
+                                ? "ios-add-circle-outline"
+                                : "md-add-circle-outline"
+                        }
                     />
                 )
             }
@@ -118,6 +122,7 @@ export default createBottomTabNavigator(
     },
     {
         tabBarOptions: {
+            initialRouteName: "Search",
             showLabel: false,
             style: {
                 backgroundColor: "#FAFAFA"
