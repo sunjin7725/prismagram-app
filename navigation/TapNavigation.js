@@ -142,7 +142,7 @@ export default createBottomTabNavigator(
         }
     },
     {
-        initialRouteName: "Profile",
+        initialRouteName: "Home",
         tabBarOptions: {
             showLabel: false,
             style: {
