@@ -9,8 +9,12 @@ import { stackStyles } from "./config";
 
 const PhotoTabs = createMaterialTopTabNavigator(
     {
-        SelectPhoto,
-        TakePhoto
+        Select: {
+            screen: SelectPhoto
+        },
+        Take: {
+            screen: TakePhoto
+        }
     },
     {
         tabBarPosition: "bottom"
