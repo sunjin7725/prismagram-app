@@ -7,22 +7,37 @@ import React from "react";
 import Home from "../screens/Tabs/Home";
 import Notifications from "../screens/Tabs/Notifications";
 import Profile from "../screens/Tabs/Profile";
-import Search from "../screens/Tabs/Search";
+import Detail from "../screens/Detail";
+import Search from "../screens/Tabs/Search/index";
 import { View } from "react-native";
 import MessageLink from "../components/MessagesLink";
 import NavIcon from "../components/NavIcon";
 import { stackStyles } from "./config";
+import styles from "../styles";
 
 const stackFactory = (initialRoute, customConfig) =>
-    createStackNavigator({
-        initialRoute: {
-            screen: initialRoute,
-            navigationOptions: {
-                ...customConfig,
+    createStackNavigator(
+        {
+            initialRoute: {
+                screen: initialRoute,
+                navigationOptions: {
+                    ...customConfig
+                }
+            },
+            Detail: {
+                screen: Detail,
+                navigationOptions: {
+                    headerTintColor: styles.blackColor,
+                    title: "Photo"
+                }
+            }
+        },
+        {
+            defaultNavigationOptions: {
                 headerStyle: { ...stackStyles }
             }
         }
-    });
+    );
 
 export default createBottomTabNavigator(
     {
@@ -50,7 +65,9 @@ export default createBottomTabNavigator(
             }
         },
         Search: {
-            screen: stackFactory(Search),
+            screen: stackFactory(Search, {
+                headerBackTitle: null
+            }),
             navigationOptions: {
                 tabBarIcon: ({ focused }) => (
                     <NavIcon
