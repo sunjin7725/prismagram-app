@@ -1,3 +1,3 @@
-const apolloClientOptions = { uri: "http://203.255.92.82:4000" };
+const apolloClientOptions = { uri: "https://prismagra-backend.herokuapp.com/" };
 
 export default apolloClientOptions;
